@@ -10,7 +10,7 @@
 	<body>
 		<#include "global/header.ftl"/>
 		<div class="container">
-			<div class="panel panel-primary">
+			<div class="panel panel-danger">
 			  <div class="panel-heading">
 			  	Your request could not be processed.
 			  </div>

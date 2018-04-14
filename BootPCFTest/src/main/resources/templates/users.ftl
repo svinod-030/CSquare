@@ -2,7 +2,7 @@
   <div class="panel-heading">
   	All Users
   </div>
-  <div class="panel-body">
+  <div class="panel-body table-responsive">
   <#if (users?size > 0) >
 	<table class="table table-striped">
 		<tr>
