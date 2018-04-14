@@ -69,6 +69,13 @@
 			      </div>
 			    </div>
 			  </div>
+			  <#if msg??>
+				  <div class="form-group"> 
+					<div class="alert alert-info" role="alert">
+						${msg!}
+					</div>
+				  </div>
+			  </#if>
 			  <div class="form-group"> 
 			    <div class="col-sm-offset-2 col-sm-10">
 			      <button type="submit" class="btn btn-primary">Submit</button>

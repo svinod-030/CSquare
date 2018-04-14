@@ -8,6 +8,12 @@ public class User {
 	private String firstname;
 	private String lastname;
 
+	private String loginStatus;
+	
+	public User() {
+		super();
+	}
+
 	public User(String id, String email, String password, String firstname, String lastname) {
 		super();
 		this.id = id;
@@ -63,4 +69,11 @@ public class User {
 		this.password = password;
 	}
 
+	public String getLoginStatus() {
+		return loginStatus;
+	}
+
+	public void setLoginStatus(String loginStatus) {
+		this.loginStatus = loginStatus;
+	}
 }

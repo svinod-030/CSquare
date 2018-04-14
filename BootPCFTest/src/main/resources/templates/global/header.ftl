@@ -25,8 +25,15 @@
 		      <li><a href="/page2">Page 2</a></li>
 		    </ul>
 		    <ul class="nav navbar-nav navbar-right">
-		      <li><a href="/signUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-		      <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		    	<#if sessionId??>
+		    		<#if user??>
+		    			<li><a href="#"><span class="glyphicon glyphicon-user"></span> ${user.firstname!} ${user.lastname!}</a></li>
+		    		</#if>
+		    		<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+		    	<#else>
+		    		<li><a href="/signUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+		    		<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		    	</#if>
 		    </ul>
 		 </div>
 	  </div>

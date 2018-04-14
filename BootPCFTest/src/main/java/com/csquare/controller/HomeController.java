@@ -1,6 +1,10 @@
 package com.csquare.controller;
 
+import java.util.Base64;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,11 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.csquare.dao.IDAO;
 import com.csquare.teo.User;
+import com.csquare.util.Constants;
 
 @Controller
 public class HomeController {
 
 	ModelAndView mv = new ModelAndView("SPA");
+	HttpSession session=null;
 
 	@RequestMapping("/")
 	public ModelAndView displayIndexPage() {
@@ -42,11 +48,22 @@ public class HomeController {
 
 	@RequestMapping(value = "/submitLogin", method = RequestMethod.POST)
 	public ModelAndView submitLoginForm(@RequestParam("username") String username,
-			@RequestParam("password") String password) {
-		mv.addObject("viewName", "home.ftl");
+			@RequestParam("password") String password, HttpServletRequest request) {
 		User user = new User(username, password);
-		String output = IDAO.validateUser(user);
-		mv.addObject("msg", output);
+		User userOutput = IDAO.validateUser(user);
+		String loginStatus = userOutput.getLoginStatus();
+		if (loginStatus.equals(Constants.login_success)) {
+			mv.addObject("viewName", "home.ftl");
+			session = request.getSession(true);
+			session.setAttribute("sessionId", Base64.getEncoder().encode(userOutput.getEmail().getBytes()));
+			mv.addObject("user", userOutput);
+		} else if (loginStatus.equals(Constants.login_failure)) {
+			request.setAttribute("msg", "Please Enter Correct Password");
+			mv.addObject("viewName", "login.ftl");
+		} else if (loginStatus.equals(Constants.login_email_not_exists)) {
+			request.setAttribute("msg", "Email doesn't exist in our records.");
+			mv.addObject("viewName", "login.ftl");
+		}
 		return mv;
 	}
 
@@ -89,5 +106,23 @@ public class HomeController {
 		mv.addObject("msg", output);
 		return mv;
 	}
-
+	
+	@RequestMapping("/logout")
+	public ModelAndView logout(HttpServletRequest request) {
+		mv.clear();
+		if(session != null) {
+			session.invalidate();
+		}
+		mv.setViewName("SPA");
+		mv.addObject("viewName", "home.ftl");
+		request.setAttribute("msg", "You've logged out successfully. Thank you for your time.");
+		return mv;
+	}
+	
+	@RequestMapping("/TechDiff")
+	public ModelAndView techDiff() {
+		mv.addObject("viewName", "techdiff.ftl");
+		return mv;
+	}
+	
 }

@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 
 import com.csquare.common.SQLQueries;
 import com.csquare.teo.User;
+import com.csquare.util.Constants;
 
 public class DAOImpl implements IDAO {
 
@@ -45,20 +46,28 @@ public class DAOImpl implements IDAO {
 		}
 	}
 
-	public String validateUser(User user) {
-
+	public User validateUser(User user) {
+		User userOutPut = new User();
 		try {
 			getConnection();
 			stmt = con.prepareStatement(SQLQueries.getUserQ);
 			stmt.setString(1, user.getEmail());
 			ResultSet rs1 = stmt.executeQuery();
-			if (rs1.next()) {// get first result
+			if (rs1.next()) {
 				if (rs1.getString("password").equals(user.getPassword())) {
-					return rs1.getString("email") + " validated successfully.";
-				} else
-					return " Invalid Credentials.";
+					userOutPut.setEmail(rs1.getString("email"));
+					userOutPut.setFirstname(rs1.getString("firstname"));
+					userOutPut.setLastname(rs1.getString("lastname"));
+					userOutPut.setPassword("");
+					userOutPut.setLoginStatus(Constants.login_success);
+					log.info("Successfully validated");
+				} else {
+					userOutPut.setLoginStatus(Constants.login_failure);
+					log.error("Wrong password");
+				}
 			}else {
-				return " Invalid Credentials.";
+				userOutPut.setLoginStatus(Constants.login_email_not_exists);
+				log.error("Email is not registered with us.");
 			}
 		} catch (SQLException e) {
 			log.error(e.getMessage());
@@ -67,7 +76,7 @@ public class DAOImpl implements IDAO {
 		} finally {
 			closeConnection();
 		}
-		return null;
+		return userOutPut;
 	}
 
 	public String dropUsersTable() {

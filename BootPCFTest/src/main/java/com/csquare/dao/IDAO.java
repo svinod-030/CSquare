@@ -8,7 +8,7 @@ public interface IDAO {
 
 	DAOImpl objDAOImpl = new DAOImpl();
 
-	public static String validateUser(User user) {
+	public static User validateUser(User user) {
 		return objDAOImpl.validateUser(user);
 	}
 
