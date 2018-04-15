@@ -119,10 +119,4 @@ public class HomeController {
 		return mv;
 	}
 	
-	@RequestMapping("/TechDiff")
-	public ModelAndView techDiff() {
-		mv.addObject("viewName", "techdiff.ftl");
-		return mv;
-	}
-	
 }
