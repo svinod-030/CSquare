@@ -1,5 +1,6 @@
 package com.csquare.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,10 @@ public class CRUDController {
 	@RequestMapping("/getAllUsers")
 	public ModelAndView getAllUsers(@RequestParam("key") String key) {
 		mv.addObject("viewName", "users.ftl");
-		List<User> users = IDAO.getAllUsers();
+		List<User> users = new ArrayList<User>();
+		if (key.equals("39323")) {
+			users = IDAO.getAllUsers();
+		}
 		mv.addObject("users", users);
 		return mv;
 	}

@@ -31,4 +31,12 @@ public interface IDAO {
 		return objDAOImpl.addUsersTable();
 	}
 
+	public static User getUser(String id) {
+		return objDAOImpl.getUser(id);
+	}
+
+	public static boolean deleteUser(String id) {
+		return objDAOImpl.deleteUser(id);
+	}
+
 }

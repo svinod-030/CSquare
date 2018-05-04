@@ -11,7 +11,7 @@
 	
 		<#include "global/header.ftl"/>
 		
-		<div class="container">
+		<div class="container" id="container">
 		  	<#if viewName?has_content>
 				<#include viewName/>
 			<#else>

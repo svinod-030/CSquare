@@ -15,4 +15,8 @@ public class SQLQueries {
 
 	public static final String dropUsersTable = "DROP TABLE users;";
 
+	public static String getUserByID = "SELECT email, password, firstname, lastname FROM users WHERE id=?;";
+
+	public static String deleteUserByID = "DELETE FROM users WHERE id=?";
+
 }

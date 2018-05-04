@@ -18,7 +18,7 @@ public class DAOImpl implements IDAO {
 
 	Connection con = null;
 	PreparedStatement stmt = null;
-	Logger log= Logger.getLogger(DAOImpl.class);
+	Logger log = Logger.getLogger(DAOImpl.class);
 
 	public void getConnection() {
 		try {
@@ -33,11 +33,11 @@ public class DAOImpl implements IDAO {
 			log.error(e.getMessage());
 		} catch (SQLException e) {
 			log.error(e.getMessage());
-		} 
+		}
 	}
-	
+
 	private void closeConnection() {
-		if(con!=null) {
+		if (con != null) {
 			try {
 				con.close();
 			} catch (SQLException e) {
@@ -65,7 +65,7 @@ public class DAOImpl implements IDAO {
 					userOutPut.setLoginStatus(Constants.login_failure);
 					log.error("Wrong password");
 				}
-			}else {
+			} else {
 				userOutPut.setLoginStatus(Constants.login_email_not_exists);
 				log.error("Email is not registered with us.");
 			}
@@ -145,6 +145,60 @@ public class DAOImpl implements IDAO {
 			closeConnection();
 		}
 		return null;
+	}
+
+	public User getUser(String id) {
+		User userOutPut = new User();
+		try {
+			getConnection();
+			stmt = con.prepareStatement(SQLQueries.getUserByID);
+			stmt.setString(1, id);
+			ResultSet rs1 = stmt.executeQuery();
+			if (rs1.next()) {
+				userOutPut.setEmail(rs1.getString("email"));
+				userOutPut.setFirstname(rs1.getString("firstname"));
+				userOutPut.setLastname(rs1.getString("lastname"));
+				userOutPut.setPassword("");
+				userOutPut.setLoginStatus("");
+				userOutPut.setId(id);
+				log.info("User found");
+			} else {
+				userOutPut.setLoginStatus("User Not Found");
+				log.error("User not found");
+			}
+		} catch (SQLException e) {
+			log.error(e.getMessage());
+		} catch (Exception e) {
+			log.error(e.getMessage());
+		} finally {
+			closeConnection();
+		}
+		return userOutPut;
+	}
+
+	public boolean deleteUser(String id) {
+		boolean output = false;
+		try {
+			getConnection();
+			stmt = con.prepareStatement(SQLQueries.deleteUserByID);
+			stmt.setString(1, id);
+			int recordsDeleted = stmt.executeUpdate();
+			if (recordsDeleted == 1) {
+				output = true;
+				log.info("User id: " + id + " (count = " + recordsDeleted + ") Deleted successfully.");
+			} else if (recordsDeleted > 1) {
+				log.warn("Number of users deleted: " + recordsDeleted);
+			} else {
+				log.error("Failed to delete the user.");
+			}
+		} catch (SQLException e) {
+			log.error(e.getMessage());
+		} catch (Exception e) {
+			log.error(e.getMessage());
+		} finally {
+			closeConnection();
+		}
+		return output;
 	}
 
 }
