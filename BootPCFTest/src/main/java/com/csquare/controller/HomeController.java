@@ -21,4 +21,10 @@ public class HomeController {
 		mv.addObject("viewName", "page1.ftl");
 		return mv;
 	}
+	
+	@RequestMapping("/page3")
+	public ModelAndView displaySomePage3() {
+		mv.addObject("viewName", "page1.ftl");
+		return mv;
+	}
 }
