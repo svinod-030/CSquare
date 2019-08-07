@@ -1,0 +1,206 @@
+<html>
+  <head>
+    <title>Travels</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.1/css/all.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+	<!-- Navigation Starts-->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+	  <div class="container">
+		<a class="navbar-brand" href="#">
+			<!-- <img src="" alt="Travels"> -->
+			<span>Tours & Travels</span>
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+		  <ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+			  <a class="nav-link" href="#">Register</a>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Sign In
+				</a>
+				<div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+					<a class="dropdown-item" href="#">Sign In</a>
+					<a class="dropdown-item" href="#">Google <i class="fab fa-google-plus-g white-text mr-2"></i></a>
+					<a class="dropdown-item" href="#">Facebook <i class="fab fa-facebook-f white-text mr-2"></i></a>
+				</div>
+			</li>
+		  </ul>
+		</div>
+	  </div>
+	</nav>
+	<!-- Navigation Ends-->
+	<!-- Body Starts-->
+	<div id="container" class="container mt-3">
+		<div id="body" class="row">
+			<div style="height:400px;" id="map" class="col-md-6"></div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="origin">Origin:</label>
+					<input type="text" class="form-control" id="origin" name="origin" readonly>
+				</div>
+				<div class="form-group">
+					<label for="destination">Destination:</label>
+					<input type="text" class="form-control" id="destination" name="destination" readonly>
+				</div>
+				<div class="form-group">
+					<input class="btn btn-light" type="button" value="Reset" />
+					<input class="btn btn-primary" type="button" value="Submit" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Body Ends-->
+	<!-- Footer -->
+	<footer class="page-footer font-small mt-3">
+		<div class="bg-dark" style="color:#fff;">
+			<div class="container">
+				<div class="row py-4 d-flex align-items-center">
+					<div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+						<h6 class="mb-0">Get connected with us on social networks!</h6>
+					</div>
+					<div class="col-md-6 col-lg-7 text-center text-md-right">
+						<a class="fb-ic">
+							<i class="fab fa-facebook-f white-text mr-4"> </i>
+						</a>
+						<a class="tw-ic">
+							<i class="fab fa-twitter white-text mr-4"> </i>
+						</a>
+						<a class="gplus-ic">
+							<i class="fab fa-google-plus-g white-text mr-4"> </i>
+						</a>
+						<a class="li-ic">
+							<i class="fab fa-linkedin-in white-text mr-4"> </i>
+						</a>
+						<a class="ins-ic">
+							<i class="fab fa-instagram white-text"> </i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	  <div class="container text-center text-md-left mt-5">
+		<div class="row mt-3">
+			<div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+				<h6 class="text-uppercase font-weight-bold">About Us</h6>
+				<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+				<p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+			</div>
+			<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+				<h6 class="text-uppercase font-weight-bold">Options</h6>
+				<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+				<p><a href="#!">Something</a></p>
+				<p><a href="#!">Another Thing</a></p>
+				<p><a href="#!">Other Thing</a></p>
+				<p><a href="#!">Something Extra</a></p>
+			</div>
+			<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+				<h6 class="text-uppercase font-weight-bold">Options</h6>
+				<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+				<p><a href="#!">Something</a></p>
+				<p><a href="#!">Another Thing</a></p>
+				<p><a href="#!">Other Thing</a></p>
+				<p><a href="#!">Something Extra</a></p>
+			</div>
+			<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+				<h6 class="text-uppercase font-weight-bold">Contact</h6>
+				<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+				<p><i class="fas fa-home mr-3"></i>Hyderabad, Telangana</p>
+				<p><i class="fas fa-envelope mr-3"></i>info@gmail.com</p>
+				<p><i class="fas fa-phone mr-3"></i> +91 12 34 567 880</p>
+				<p><i class="fas fa-print mr-3"></i> +91 12 34 567 890</p>
+			</div>
+		</div>
+	  </div>
+	  <div class="footer-copyright text-center py-3">
+		Copyright &copy; <a href="#">Tours & Travels</a> All Rights Reserved.
+	  </div>
+	  <!-- Copyright -->
+
+	</footer>
+	<!-- Footer -->
+    <script>
+      var map;
+      function initMap() {
+		var coordinates = [{id:1,title:"Hyderabad",location:{lat: 17.3850, lng: 78.4867}},
+							{id:2,title:"HiTech City",location:{lat: 17.4435, lng: 78.3772}},
+							{id:3,title:"Kukatpally",location:{lat: 17.4948, lng: 78.3996}},
+							{id:4,title:"Gachibowli",location:{lat: 17.4401, lng: 78.3489}}];
+		
+		// The map, centered at Hyderabad
+		var map = new google.maps.Map(document.getElementById('map'), {
+			center: coordinates[0].location,
+			zoom: 11,
+			mapTypeControl: false,
+			scaleControl: false,
+			streetViewControl: false,
+			rotateControl: false
+		});
+		// The marker, positioned at every stop
+		var markers=[];
+		var origin=null,destination=null;
+		var dot={path: google.maps.SymbolPath.CIRCLE,
+					scale: 9,
+					strokeWeight: 2,
+					fillOpacity: 1,
+					fillColor: "red"
+				};
+		for(var i=0;i<coordinates.length;i++){
+			marker = new google.maps.Marker(
+							{id:coordinates[i].id,
+							position: coordinates[i].location,
+							map: map,
+							icon: dot,
+							title:coordinates[i].title,
+							animation: google.maps.Animation.DROP});
+			markers.push(marker);
+			google.maps.event.addListener(marker, 'click', setPickupAndDrop);
+		}
+		var infowindow = new google.maps.InfoWindow({
+          content: "Please un-select exiting Origin/Destination"
+        });
+		
+		function setPickupAndDrop() {
+			if(origin===null && destination!==this.id){
+				this.setIcon(null);
+				this.setLabel('O');
+				origin=this.id;
+				$("#origin").val(this.title);
+			}else if(this.id===origin){
+				this.setIcon(dot);
+				this.setLabel(null);
+				origin=null;
+				$("#origin").val("");
+			}else if(this.id!==origin && destination===null){
+				this.setIcon(null);
+				this.setLabel('D');
+				destination=this.id;
+				$("#destination").val(this.title);
+			}else if(this.id===destination){
+				this.setIcon(dot);
+				this.setLabel(null);
+				destination=null;
+				$("#destination").val("");
+			}else{
+				infowindow.open(map, this);
+			}
+		}
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmaIre80gT7j9MJUry-vvS6HF03r8MBPw&callback=initMap"></script>
+  </body>
+</html>
